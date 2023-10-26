@@ -8,3 +8,8 @@ git clone git@github.com:z-institute/Web3-Frontend-Dev-Batch-2-HW.git --branch <
 ## GitHub Basic Usage
 * Upload code
 ```
+cd <dir>
+git add .
+git commit -m "<commit message>"
+git push
+```
