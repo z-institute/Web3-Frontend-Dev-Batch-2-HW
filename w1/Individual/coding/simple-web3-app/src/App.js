@@ -11,6 +11,10 @@ const web3Modal = new Web3Modal({
 
 function App() {
   const [contract, setConctract] = useState(null);
+  const [contractAddr, setContractAddr] = useState(
+    "0xAe68654757D3E1d292d1Fe29F7329F249845EF8d"
+  );
+  const [contractBalance, setContractBalance] = useState("0");
   const [address, setAddress] = useState("0x0");
   const [balance, setBalance] = useState("0");
   // const [ensAddress, setEnsAddress] = useState("");
@@ -20,7 +24,7 @@ function App() {
   const [paidInputMsg, setPaidInputMsg] = useState("");
   const [disabledEle, setDisabledEle] = useState(false);
 
-  const contractAddr = "0xAe68654757D3E1d292d1Fe29F7329F249845EF8d";
+  // const contractAddr = "0xAe68654757D3E1d292d1Fe29F7329F249845EF8d";
   const abi = [
     {
       inputs: [
@@ -80,7 +84,7 @@ function App() {
     const instance = await web3Modal.connect(); // window.ethereum
 
     let _signer = null;
-    let _provider, _address, _balance;
+    let _provider, _address, _balance, _contractBalance;
     // let ensAddress;
 
     if (instance === null) {
@@ -92,6 +96,7 @@ function App() {
       _address = await _signer.getAddress();
       _balance = await _provider.getBalance(_address);
       // ensAddress = await provider.lookupAddress(address);
+      _contractBalance = await _provider.getBalance(contractAddr);
     }
 
     const _contract = new ethers.Contract(contractAddr, abi, _signer);
@@ -101,6 +106,7 @@ function App() {
 
     setAddress(_address);
     setBalance(formatEther(_balance));
+    setContractBalance(formatEther(_contractBalance));
     // setEnsAddress(ensAddress);
     setConctract(_contract);
     setMessage(_message);
@@ -155,39 +161,51 @@ function App() {
           <p>
             <span>Balance:</span> {balance} ETH
           </p>
-          <p>
-            <span>Your message:</span> {message}
-          </p>
-          <p>
-            <span>Your paid message:</span> {paidMsg}
-          </p>
+          <div className="App-connect-wallet">
+            <button onClick={handleConnect}>Connect Wallet</button>
+          </div>
         </div>
-        <div className="App-connect-wallet">
-          <button onClick={handleConnect}>Connect Wallet</button>
-        </div>
-        <div className="App-contract-func">
-          <input
-            type="text"
-            onChange={(e) => setInputMsg(e.target.value)}
-            placeholder="Your message..."
-            value={inputMsg}
-            disabled={disabledEle}
-          />
-          <button onClick={handleStoreMsg} disabled={disabledEle}>
-            Store Message
-          </button>
-        </div>
-        <div className="App-contract-func">
-          <input
-            type="text"
-            onChange={(e) => setPaidInputMsg(e.target.value)}
-            placeholder="Your message..."
-            value={paidInputMsg}
-            disabled={disabledEle}
-          />
-          <button onClick={handleStorePaidMsg} disabled={disabledEle}>
-            Store Paid Message
-          </button>
+
+        <div className="App-contract">
+          <div className="App-contract-info">
+            <p>
+              <span>Contract:</span> {contract && contractAddr}
+              {/* <input type="text" disabled value={contractAddr} /> */}
+            </p>
+            <p>
+              <span>Contract Balance:</span> {contractBalance} ETH
+            </p>
+            <p>
+              <span>Your message:</span> {message}
+            </p>
+            <p>
+              <span>Your paid message:</span> {paidMsg}
+            </p>
+          </div>
+          <div className="App-contract-func">
+            <input
+              type="text"
+              onChange={(e) => setInputMsg(e.target.value)}
+              placeholder="Your message..."
+              value={inputMsg}
+              disabled={disabledEle}
+            />
+            <button onClick={handleStoreMsg} disabled={disabledEle}>
+              Store Message
+            </button>
+          </div>
+          <div className="App-contract-func">
+            <input
+              type="text"
+              onChange={(e) => setPaidInputMsg(e.target.value)}
+              placeholder="Your message..."
+              value={paidInputMsg}
+              disabled={disabledEle}
+            />
+            <button onClick={handleStorePaidMsg} disabled={disabledEle}>
+              Store Paid Message
+            </button>
+          </div>
         </div>
       </header>
     </div>
