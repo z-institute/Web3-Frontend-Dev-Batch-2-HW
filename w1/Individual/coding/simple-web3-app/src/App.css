@@ -1,0 +1,114 @@
+.App {
+  text-align: center;
+}
+
+.App-logo-container {
+  width: 80vmin;
+}
+.App-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.App-content p span {
+  font-weight: 600;
+}
+
+.App-connect-wallet {
+  margin-bottom: 2rem;
+}
+.App-connect-wallet button {
+  width: 15rem;
+  height: 3rem;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(to right, #7ea2f5 0%, #0da540 100%);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0px 0px 0.5px 0.5px rgba(255, 255, 255, 0.8);
+}
+
+.App-contract-func {
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  position: relative;
+  left: 35%;
+  width: 50%;
+  height: auto;
+  /* transform: translateX(-50%); */
+}
+.App-contract-func input {
+  margin-right: 1rem;
+  height: 30px;
+  border-radius: 5px;
+}
+.App-contract-func input:disabled {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.App-contract-func button {
+  border-radius: 5px;
+  color: #fff;
+  background: linear-gradient(to right, #7ea2f5 0%, #0da540 100%);
+  height: 36px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.App-contract-func button:disabled {
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: initial;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-carousel infinite 8s linear;
+    overflow-x: hidden;
+    opacity: 0;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-carousel {
+  0% {
+    transform: translateX(-120%);
+    /* opacity: 0; */
+  }
+  36% {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+  72% {
+    transform: translateX(50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
