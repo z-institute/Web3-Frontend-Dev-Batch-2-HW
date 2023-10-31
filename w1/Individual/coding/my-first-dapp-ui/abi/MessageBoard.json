@@ -1,0 +1,1433 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_message",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_paid",
+          "type": "bool"
+        }
+      ],
+      "name": "NewMessage",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "getMessages",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct MessageBoard.Message[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPaidMessages",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct MessageBoard.Message[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "str",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "isPaid",
+          "type": "bool"
+        }
+      ],
+      "name": "writeMessage",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x608060405234801561001057600080fd5b50610784806100206000396000f3fe6080604052600436106100345760003560e01c80635ff6cbf314610039578063600fd5a81461006457806376b00d5014610079575b600080fd5b34801561004557600080fd5b5061004e61008e565b60405161005b9190610475565b60405180910390f35b61007761007236600461051f565b610192565b005b34801561008557600080fd5b5061004e610334565b60606000805480602002602001604051908101604052809291908181526020016000905b8282101561018957838290600052602060002090600202016040518060400160405290816000820180546100e5906105e1565b80601f0160208091040260200160405190810160405280929190818152602001828054610111906105e1565b801561015e5780601f106101335761010080835404028352916020019161015e565b820191906000526020600020905b81548152906001019060200180831161014157829003601f168201915b50505091835250506001918201546001600160a01b03166020918201529183529290920191016100b2565b50505050905090565b801561026c5767016345785d8a000034146101e55760405162461bcd60e51b815260206004820152600f60248201526e139bdd08195b9bdd59da08199d5b99608a1b604482015260640160405180910390fd5b60408051808201909152828152336020820152600180548082018255600091909152815160029091027fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf60190819061023d908261066a565b5060209190910151600190910180546001600160a01b0319166001600160a01b039092169190911790556102ed565b6040805180820190915282815233602082015260008054600181018255908052815160029091027f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e563019081906102c2908261066a565b5060209190910151600190910180546001600160a01b0319166001600160a01b039092169190911790555b336001600160a01b03167f11d854a847402dc7fc3583984a37aa51c8df7af996216aff78a770d655ac45c8838360405161032892919061072a565b60405180910390a25050565b60606001805480602002602001604051908101604052809291908181526020016000905b82821015610189578382906000526020600020906002020160405180604001604052908160008201805461038b906105e1565b80601f01602080910402602001604051908101604052809291908181526020018280546103b7906105e1565b80156104045780601f106103d957610100808354040283529160200191610404565b820191906000526020600020905b8154815290600101906020018083116103e757829003601f168201915b50505091835250506001918201546001600160a01b0316602091820152918352929092019101610358565b6000815180845260005b8181101561045557602081850181015186830182015201610439565b506000602082860101526020601f19601f83011685010191505092915050565b60006020808301818452808551808352604092508286019150828160051b87010184880160005b838110156104e657888303603f19018552815180518785526104c08886018261042f565b918901516001600160a01b0316948901949094529487019492509086019060010161049c565b509098975050505050505050565b634e487b7160e01b600052604160045260246000fd5b8035801515811461051a57600080fd5b919050565b6000806040838503121561053257600080fd5b823567ffffffffffffffff8082111561054a57600080fd5b818501915085601f83011261055e57600080fd5b813581811115610570576105706104f4565b604051601f8201601f19908116603f01168101908382118183101715610598576105986104f4565b816040528281528860208487010111156105b157600080fd5b8260208601602083013760006020848301015280965050505050506105d86020840161050a565b90509250929050565b600181811c908216806105f557607f821691505b60208210810361061557634e487b7160e01b600052602260045260246000fd5b50919050565b601f82111561066557600081815260208120601f850160051c810160208610156106425750805b601f850160051c820191505b818110156106615782815560010161064e565b5050505b505050565b815167ffffffffffffffff811115610684576106846104f4565b6106988161069284546105e1565b8461061b565b602080601f8311600181146106cd57600084156106b55750858301515b600019600386901b1c1916600185901b178555610661565b600085815260208120601f198616915b828110156106fc578886015182559484019460019091019084016106dd565b508582101561071a5787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60408152600061073d604083018561042f565b90508215156020830152939250505056fea2646970667358221220147886ed9c06a3d3e40f7a96c50fc137de24b3aecb733a42555867386ba8731464736f6c63430008140033",
+    "sourceMap": "65:855:18:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052600436106100345760003560e01c80635ff6cbf314610039578063600fd5a81461006457806376b00d5014610079575b600080fd5b34801561004557600080fd5b5061004e61008e565b60405161005b9190610475565b60405180910390f35b61007761007236600461051f565b610192565b005b34801561008557600080fd5b5061004e610334565b60606000805480602002602001604051908101604052809291908181526020016000905b8282101561018957838290600052602060002090600202016040518060400160405290816000820180546100e5906105e1565b80601f0160208091040260200160405190810160405280929190818152602001828054610111906105e1565b801561015e5780601f106101335761010080835404028352916020019161015e565b820191906000526020600020905b81548152906001019060200180831161014157829003601f168201915b50505091835250506001918201546001600160a01b03166020918201529183529290920191016100b2565b50505050905090565b801561026c5767016345785d8a000034146101e55760405162461bcd60e51b815260206004820152600f60248201526e139bdd08195b9bdd59da08199d5b99608a1b604482015260640160405180910390fd5b60408051808201909152828152336020820152600180548082018255600091909152815160029091027fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf60190819061023d908261066a565b5060209190910151600190910180546001600160a01b0319166001600160a01b039092169190911790556102ed565b6040805180820190915282815233602082015260008054600181018255908052815160029091027f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e563019081906102c2908261066a565b5060209190910151600190910180546001600160a01b0319166001600160a01b039092169190911790555b336001600160a01b03167f11d854a847402dc7fc3583984a37aa51c8df7af996216aff78a770d655ac45c8838360405161032892919061072a565b60405180910390a25050565b60606001805480602002602001604051908101604052809291908181526020016000905b82821015610189578382906000526020600020906002020160405180604001604052908160008201805461038b906105e1565b80601f01602080910402602001604051908101604052809291908181526020018280546103b7906105e1565b80156104045780601f106103d957610100808354040283529160200191610404565b820191906000526020600020905b8154815290600101906020018083116103e757829003601f168201915b50505091835250506001918201546001600160a01b0316602091820152918352929092019101610358565b6000815180845260005b8181101561045557602081850181015186830182015201610439565b506000602082860101526020601f19601f83011685010191505092915050565b60006020808301818452808551808352604092508286019150828160051b87010184880160005b838110156104e657888303603f19018552815180518785526104c08886018261042f565b918901516001600160a01b0316948901949094529487019492509086019060010161049c565b509098975050505050505050565b634e487b7160e01b600052604160045260246000fd5b8035801515811461051a57600080fd5b919050565b6000806040838503121561053257600080fd5b823567ffffffffffffffff8082111561054a57600080fd5b818501915085601f83011261055e57600080fd5b813581811115610570576105706104f4565b604051601f8201601f19908116603f01168101908382118183101715610598576105986104f4565b816040528281528860208487010111156105b157600080fd5b8260208601602083013760006020848301015280965050505050506105d86020840161050a565b90509250929050565b600181811c908216806105f557607f821691505b60208210810361061557634e487b7160e01b600052602260045260246000fd5b50919050565b601f82111561066557600081815260208120601f850160051c810160208610156106425750805b601f850160051c820191505b818110156106615782815560010161064e565b5050505b505050565b815167ffffffffffffffff811115610684576106846104f4565b6106988161069284546105e1565b8461061b565b602080601f8311600181146106cd57600084156106b55750858301515b600019600386901b1c1916600185901b178555610661565b600085815260208120601f198616915b828110156106fc578886015182559484019460019091019084016106dd565b508582101561071a5787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60408152600061073d604083018561042f565b90508215156020830152939250505056fea2646970667358221220147886ed9c06a3d3e40f7a96c50fc137de24b3aecb733a42555867386ba8731464736f6c63430008140033",
+    "sourceMap": "65:855:18:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;714:95;;;;;;;;;;;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;348:360;;;;;;:::i;:::-;;:::i;:::-;;815:103;;;;;;;;;;;;;:::i;714:95::-;758:16;793:9;786:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;786:16:18;;;-1:-1:-1;;786:16:18;;;;;-1:-1:-1;;;;;786:16:18;;;;;;;;;;;;;;;;;;;;;;;;714:95;:::o;348:360::-;431:6;427:225;;;128:9;461;:31;453:59;;;;-1:-1:-1;;;453:59:18;;3424:2:20;453:59:18;;;3406:21:20;3463:2;3443:18;;;3436:30;-1:-1:-1;;;3482:18:20;;;3475:45;3537:18;;453:59:18;;;;;;;;545:24;;;;;;;;;;;;558:10;545:24;;;;526:13;:44;;;;;;;-1:-1:-1;526:44:18;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;526:44:18;;;;;;;;;;;;-1:-1:-1;;;;;;526:44:18;-1:-1:-1;;;;;526:44:18;;;;;;;;;427:225;;;616:24;;;;;;;;;;;;629:10;616:24;;;;601:9;:40;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;601:40:18;;;;;;;;;;;;-1:-1:-1;;;;;;601:40:18;-1:-1:-1;;;;;601:40:18;;;;;;;;;427:225;677:10;-1:-1:-1;;;;;666:35:18;;689:3;694:6;666:35;;;;;;;:::i;:::-;;;;;;;;348:360;;:::o;815:103::-;863:16;898:13;891:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;891:20:18;;;-1:-1:-1;;891:20:18;;;;;-1:-1:-1;;;;;891:20:18;;;;;;;;;;;;;;;;;14:423:20;56:3;94:5;88:12;121:6;116:3;109:19;146:1;156:162;170:6;167:1;164:13;156:162;;;232:4;288:13;;;284:22;;278:29;260:11;;;256:20;;249:59;185:12;156:162;;;160:3;363:1;356:4;347:6;342:3;338:16;334:27;327:38;426:4;419:2;415:7;410:2;402:6;398:15;394:29;389:3;385:39;381:50;374:57;;;14:423;;;;:::o;442:1088::-;636:4;665:2;705;694:9;690:18;735:2;724:9;717:21;758:6;793;787:13;824:6;816;809:22;850:2;840:12;;883:2;872:9;868:18;861:25;;945:2;935:6;932:1;928:14;917:9;913:30;909:39;983:2;975:6;971:15;1004:1;1014:487;1028:6;1025:1;1022:13;1014:487;;;1093:22;;;-1:-1:-1;;1089:36:20;1077:49;;1149:13;;1195:9;;1217:18;;;1262:48;1294:15;;;1195:9;1262:48;:::i;:::-;1357:11;;;1351:18;-1:-1:-1;;;;;1347:44:20;1330:15;;;1323:69;;;;1479:12;;;;1248:62;-1:-1:-1;1444:15:20;;;;1388:1;1043:9;1014:487;;;-1:-1:-1;1518:6:20;;442:1088;-1:-1:-1;;;;;;;;442:1088:20:o;1535:127::-;1596:10;1591:3;1587:20;1584:1;1577:31;1627:4;1624:1;1617:15;1651:4;1648:1;1641:15;1667:160;1732:20;;1788:13;;1781:21;1771:32;;1761:60;;1817:1;1814;1807:12;1761:60;1667:160;;;:::o;1832:1000::-;1907:6;1915;1968:2;1956:9;1947:7;1943:23;1939:32;1936:52;;;1984:1;1981;1974:12;1936:52;2024:9;2011:23;2053:18;2094:2;2086:6;2083:14;2080:34;;;2110:1;2107;2100:12;2080:34;2148:6;2137:9;2133:22;2123:32;;2193:7;2186:4;2182:2;2178:13;2174:27;2164:55;;2215:1;2212;2205:12;2164:55;2251:2;2238:16;2273:2;2269;2266:10;2263:36;;;2279:18;;:::i;:::-;2354:2;2348:9;2322:2;2408:13;;-1:-1:-1;;2404:22:20;;;2428:2;2400:31;2396:40;2384:53;;;2452:18;;;2472:22;;;2449:46;2446:72;;;2498:18;;:::i;:::-;2538:10;2534:2;2527:22;2573:2;2565:6;2558:18;2615:7;2608:4;2603:2;2599;2595:11;2591:22;2588:35;2585:55;;;2636:1;2633;2626:12;2585:55;2696:2;2689:4;2685:2;2681:13;2674:4;2666:6;2662:17;2649:50;2743:1;2736:4;2731:2;2723:6;2719:15;2715:26;2708:37;2764:6;2754:16;;;;;;;2789:37;2820:4;2809:9;2805:20;2789:37;:::i;:::-;2779:47;;1832:1000;;;;;:::o;2837:380::-;2916:1;2912:12;;;;2959;;;2980:61;;3034:4;3026:6;3022:17;3012:27;;2980:61;3087:2;3079:6;3076:14;3056:18;3053:38;3050:161;;3133:10;3128:3;3124:20;3121:1;3114:31;3168:4;3165:1;3158:15;3196:4;3193:1;3186:15;3050:161;;2837:380;;;:::o;3692:545::-;3794:2;3789:3;3786:11;3783:448;;;3830:1;3855:5;3851:2;3844:17;3900:4;3896:2;3886:19;3970:2;3958:10;3954:19;3951:1;3947:27;3941:4;3937:38;4006:4;3994:10;3991:20;3988:47;;;-1:-1:-1;4029:4:20;3988:47;4084:2;4079:3;4075:12;4072:1;4068:20;4062:4;4058:31;4048:41;;4139:82;4157:2;4150:5;4147:13;4139:82;;;4202:17;;;4183:1;4172:13;4139:82;;;4143:3;;;3783:448;3692:545;;;:::o;4413:1352::-;4539:3;4533:10;4566:18;4558:6;4555:30;4552:56;;;4588:18;;:::i;:::-;4617:97;4707:6;4667:38;4699:4;4693:11;4667:38;:::i;:::-;4661:4;4617:97;:::i;:::-;4769:4;;4833:2;4822:14;;4850:1;4845:663;;;;5552:1;5569:6;5566:89;;;-1:-1:-1;5621:19:20;;;5615:26;5566:89;-1:-1:-1;;4370:1:20;4366:11;;;4362:24;4358:29;4348:40;4394:1;4390:11;;;4345:57;5668:81;;4815:944;;4845:663;3639:1;3632:14;;;3676:4;3663:18;;-1:-1:-1;;4881:20:20;;;4999:236;5013:7;5010:1;5007:14;4999:236;;;5102:19;;;5096:26;5081:42;;5194:27;;;;5162:1;5150:14;;;;5029:19;;4999:236;;;5003:3;5263:6;5254:7;5251:19;5248:201;;;5324:19;;;5318:26;-1:-1:-1;;5407:1:20;5403:14;;;5419:3;5399:24;5395:37;5391:42;5376:58;5361:74;;5248:201;-1:-1:-1;;;;;5495:1:20;5479:14;;;5475:22;5462:36;;-1:-1:-1;4413:1352:20:o;5770:301::-;5941:2;5930:9;5923:21;5904:4;5961:45;6002:2;5991:9;5987:18;5979:6;5961:45;:::i;:::-;5953:53;;6056:6;6049:14;6042:22;6037:2;6026:9;6022:18;6015:50;5770:301;;;;;:::o",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "getMessages()": "5ff6cbf3",
+    "getPaidMessages()": "76b00d50",
+    "writeMessage(string,bool)": "600fd5a8"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_message\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_paid\",\"type\":\"bool\"}],\"name\":\"NewMessage\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getMessages\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"message\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"}],\"internalType\":\"struct MessageBoard.Message[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPaidMessages\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"message\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"}],\"internalType\":\"struct MessageBoard.Message[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"str\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"isPaid\",\"type\":\"bool\"}],\"name\":\"writeMessage\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/MessageBoard.sol\":\"MessageBoard\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"src/MessageBoard.sol\":{\"keccak256\":\"0x8a17129d066cbff44afc94e4804c2fc51fa955c7bce827c9118c72851a73e369\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://011c5ee6c909d967391738d5979b43b25bf77a9233c52d51863fca0be159e975\",\"dweb:/ipfs/QmTfvCiws7ZUMCKaF9QCMfqJi9jrNCNoFn5SQmz6DZu9Ct\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.20+commit.a1b79de6"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_from",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "string",
+              "name": "_message",
+              "type": "string",
+              "indexed": false
+            },
+            {
+              "internalType": "bool",
+              "name": "_paid",
+              "type": "bool",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "NewMessage",
+          "anonymous": false
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getMessages",
+          "outputs": [
+            {
+              "internalType": "struct MessageBoard.Message[]",
+              "name": "",
+              "type": "tuple[]",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "message",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "from",
+                  "type": "address"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getPaidMessages",
+          "outputs": [
+            {
+              "internalType": "struct MessageBoard.Message[]",
+              "name": "",
+              "type": "tuple[]",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "message",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "from",
+                  "type": "address"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "str",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "isPaid",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function",
+          "name": "writeMessage"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "forge-std/=lib/forge-std/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/MessageBoard.sol": "MessageBoard"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/MessageBoard.sol": {
+        "keccak256": "0x8a17129d066cbff44afc94e4804c2fc51fa955c7bce827c9118c72851a73e369",
+        "urls": [
+          "bzz-raw://011c5ee6c909d967391738d5979b43b25bf77a9233c52d51863fca0be159e975",
+          "dweb:/ipfs/QmTfvCiws7ZUMCKaF9QCMfqJi9jrNCNoFn5SQmz6DZu9Ct"
+        ],
+        "license": "UNLICENSED"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/MessageBoard.sol",
+    "id": 43443,
+    "exportedSymbols": {
+      "MessageBoard": [
+        43442
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:882:18",
+    "nodes": [
+      {
+        "id": 43350,
+        "nodeType": "PragmaDirective",
+        "src": "39:24:18",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 43442,
+        "nodeType": "ContractDefinition",
+        "src": "65:855:18",
+        "nodes": [
+          {
+            "id": 43353,
+            "nodeType": "VariableDeclaration",
+            "src": "93:44:18",
+            "nodes": [],
+            "constant": true,
+            "mutability": "constant",
+            "name": "PAID_MESSAGE_PRICE",
+            "nameLocation": "107:18:18",
+            "scope": 43442,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 43351,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "93:4:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "302e31",
+              "id": 43352,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "128:9:18",
+              "subdenomination": "ether",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_100000000000000000_by_1",
+                "typeString": "int_const 100000000000000000"
+              },
+              "value": "0.1"
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 43358,
+            "nodeType": "StructDefinition",
+            "src": "144:68:18",
+            "nodes": [],
+            "canonicalName": "MessageBoard.Message",
+            "members": [
+              {
+                "constant": false,
+                "id": 43355,
+                "mutability": "mutable",
+                "name": "message",
+                "nameLocation": "176:7:18",
+                "nodeType": "VariableDeclaration",
+                "scope": 43358,
+                "src": "169:14:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 43354,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "169:6:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 43357,
+                "mutability": "mutable",
+                "name": "from",
+                "nameLocation": "201:4:18",
+                "nodeType": "VariableDeclaration",
+                "scope": 43358,
+                "src": "193:12:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 43356,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "193:7:18",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Message",
+            "nameLocation": "151:7:18",
+            "scope": 43442,
+            "visibility": "public"
+          },
+          {
+            "id": 43366,
+            "nodeType": "EventDefinition",
+            "src": "218:69:18",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "11d854a847402dc7fc3583984a37aa51c8df7af996216aff78a770d655ac45c8",
+            "name": "NewMessage",
+            "nameLocation": "224:10:18",
+            "parameters": {
+              "id": 43365,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43360,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_from",
+                  "nameLocation": "251:5:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43366,
+                  "src": "235:21:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 43359,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "235:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 43362,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_message",
+                  "nameLocation": "265:8:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43366,
+                  "src": "258:15:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 43361,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "258:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 43364,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_paid",
+                  "nameLocation": "280:5:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43366,
+                  "src": "275:10:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 43363,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "275:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "234:52:18"
+            }
+          },
+          {
+            "id": 43370,
+            "nodeType": "VariableDeclaration",
+            "src": "293:19:18",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_messages",
+            "nameLocation": "303:9:18",
+            "scope": 43442,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage",
+              "typeString": "struct MessageBoard.Message[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 43368,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 43367,
+                  "name": "Message",
+                  "nameLocations": [
+                    "293:7:18"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 43358,
+                  "src": "293:7:18"
+                },
+                "referencedDeclaration": 43358,
+                "src": "293:7:18",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Message_$43358_storage_ptr",
+                  "typeString": "struct MessageBoard.Message"
+                }
+              },
+              "id": 43369,
+              "nodeType": "ArrayTypeName",
+              "src": "293:9:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr",
+                "typeString": "struct MessageBoard.Message[]"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 43374,
+            "nodeType": "VariableDeclaration",
+            "src": "318:23:18",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "_paidMessages",
+            "nameLocation": "328:13:18",
+            "scope": 43442,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage",
+              "typeString": "struct MessageBoard.Message[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 43372,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 43371,
+                  "name": "Message",
+                  "nameLocations": [
+                    "318:7:18"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 43358,
+                  "src": "318:7:18"
+                },
+                "referencedDeclaration": 43358,
+                "src": "318:7:18",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Message_$43358_storage_ptr",
+                  "typeString": "struct MessageBoard.Message"
+                }
+              },
+              "id": 43373,
+              "nodeType": "ArrayTypeName",
+              "src": "318:9:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr",
+                "typeString": "struct MessageBoard.Message[]"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 43421,
+            "nodeType": "FunctionDefinition",
+            "src": "348:360:18",
+            "nodes": [],
+            "body": {
+              "id": 43420,
+              "nodeType": "Block",
+              "src": "417:291:18",
+              "nodes": [],
+              "statements": [
+                {
+                  "condition": {
+                    "id": 43381,
+                    "name": "isPaid",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 43378,
+                    "src": "431:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 43411,
+                    "nodeType": "Block",
+                    "src": "587:65:18",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "id": 43405,
+                                  "name": "str",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 43376,
+                                  "src": "624:3:18",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_string_memory_ptr",
+                                    "typeString": "string memory"
+                                  }
+                                },
+                                {
+                                  "expression": {
+                                    "id": 43406,
+                                    "name": "msg",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": -15,
+                                    "src": "629:3:18",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_magic_message",
+                                      "typeString": "msg"
+                                    }
+                                  },
+                                  "id": 43407,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberLocation": "633:6:18",
+                                  "memberName": "sender",
+                                  "nodeType": "MemberAccess",
+                                  "src": "629:10:18",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_string_memory_ptr",
+                                    "typeString": "string memory"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                ],
+                                "id": 43404,
+                                "name": "Message",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 43358,
+                                "src": "616:7:18",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_struct$_Message_$43358_storage_ptr_$",
+                                  "typeString": "type(struct MessageBoard.Message storage pointer)"
+                                }
+                              },
+                              "id": 43408,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "structConstructorCall",
+                              "lValueRequested": false,
+                              "nameLocations": [],
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "616:24:18",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Message_$43358_memory_ptr",
+                                "typeString": "struct MessageBoard.Message memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_Message_$43358_memory_ptr",
+                                "typeString": "struct MessageBoard.Message memory"
+                              }
+                            ],
+                            "expression": {
+                              "id": 43401,
+                              "name": "_messages",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 43370,
+                              "src": "601:9:18",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage",
+                                "typeString": "struct MessageBoard.Message storage ref[] storage ref"
+                              }
+                            },
+                            "id": 43403,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "611:4:18",
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "src": "601:14:18",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr_$_t_struct$_Message_$43358_storage_$returns$__$attached_to$_t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr_$",
+                              "typeString": "function (struct MessageBoard.Message storage ref[] storage pointer,struct MessageBoard.Message storage ref)"
+                            }
+                          },
+                          "id": 43409,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "601:40:18",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 43410,
+                        "nodeType": "ExpressionStatement",
+                        "src": "601:40:18"
+                      }
+                    ]
+                  },
+                  "id": 43412,
+                  "nodeType": "IfStatement",
+                  "src": "427:225:18",
+                  "trueBody": {
+                    "id": 43400,
+                    "nodeType": "Block",
+                    "src": "439:142:18",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 43386,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "expression": {
+                                  "id": 43383,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": -15,
+                                  "src": "461:3:18",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 43384,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberLocation": "465:5:18",
+                                "memberName": "value",
+                                "nodeType": "MemberAccess",
+                                "src": "461:9:18",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "==",
+                              "rightExpression": {
+                                "id": 43385,
+                                "name": "PAID_MESSAGE_PRICE",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 43353,
+                                "src": "474:18:18",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "src": "461:31:18",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            {
+                              "hexValue": "4e6f7420656e6f7567682066756e64",
+                              "id": 43387,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "494:17:18",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_45ab18cb05e72ba74aa2052f233db9dbfeb3fcce474994cb08ee787f5709f6a5",
+                                "typeString": "literal_string \"Not enough fund\""
+                              },
+                              "value": "Not enough fund"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_stringliteral_45ab18cb05e72ba74aa2052f233db9dbfeb3fcce474994cb08ee787f5709f6a5",
+                                "typeString": "literal_string \"Not enough fund\""
+                              }
+                            ],
+                            "id": 43382,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              -18,
+                              -18
+                            ],
+                            "referencedDeclaration": -18,
+                            "src": "453:7:18",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (bool,string memory) pure"
+                            }
+                          },
+                          "id": 43388,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "453:59:18",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 43389,
+                        "nodeType": "ExpressionStatement",
+                        "src": "453:59:18"
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "id": 43394,
+                                  "name": "str",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 43376,
+                                  "src": "553:3:18",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_string_memory_ptr",
+                                    "typeString": "string memory"
+                                  }
+                                },
+                                {
+                                  "expression": {
+                                    "id": 43395,
+                                    "name": "msg",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": -15,
+                                    "src": "558:3:18",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_magic_message",
+                                      "typeString": "msg"
+                                    }
+                                  },
+                                  "id": 43396,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberLocation": "562:6:18",
+                                  "memberName": "sender",
+                                  "nodeType": "MemberAccess",
+                                  "src": "558:10:18",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_string_memory_ptr",
+                                    "typeString": "string memory"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                ],
+                                "id": 43393,
+                                "name": "Message",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 43358,
+                                "src": "545:7:18",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_struct$_Message_$43358_storage_ptr_$",
+                                  "typeString": "type(struct MessageBoard.Message storage pointer)"
+                                }
+                              },
+                              "id": 43397,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "structConstructorCall",
+                              "lValueRequested": false,
+                              "nameLocations": [],
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "545:24:18",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Message_$43358_memory_ptr",
+                                "typeString": "struct MessageBoard.Message memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_Message_$43358_memory_ptr",
+                                "typeString": "struct MessageBoard.Message memory"
+                              }
+                            ],
+                            "expression": {
+                              "id": 43390,
+                              "name": "_paidMessages",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 43374,
+                              "src": "526:13:18",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage",
+                                "typeString": "struct MessageBoard.Message storage ref[] storage ref"
+                              }
+                            },
+                            "id": 43392,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "540:4:18",
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "src": "526:18:18",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr_$_t_struct$_Message_$43358_storage_$returns$__$attached_to$_t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr_$",
+                              "typeString": "function (struct MessageBoard.Message storage ref[] storage pointer,struct MessageBoard.Message storage ref)"
+                            }
+                          },
+                          "id": 43398,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "526:44:18",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 43399,
+                        "nodeType": "ExpressionStatement",
+                        "src": "526:44:18"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 43414,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -15,
+                          "src": "677:3:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 43415,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "681:6:18",
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "677:10:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 43416,
+                        "name": "str",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 43376,
+                        "src": "689:3:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "id": 43417,
+                        "name": "isPaid",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 43378,
+                        "src": "694:6:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 43413,
+                      "name": "NewMessage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 43366,
+                      "src": "666:10:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_string_memory_ptr_$_t_bool_$returns$__$",
+                        "typeString": "function (address,string memory,bool)"
+                      }
+                    },
+                    "id": 43418,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "666:35:18",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 43419,
+                  "nodeType": "EmitStatement",
+                  "src": "661:40:18"
+                }
+              ]
+            },
+            "functionSelector": "600fd5a8",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "writeMessage",
+            "nameLocation": "357:12:18",
+            "parameters": {
+              "id": 43379,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43376,
+                  "mutability": "mutable",
+                  "name": "str",
+                  "nameLocation": "384:3:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43421,
+                  "src": "370:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 43375,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "370:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 43378,
+                  "mutability": "mutable",
+                  "name": "isPaid",
+                  "nameLocation": "394:6:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43421,
+                  "src": "389:11:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 43377,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "389:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "369:32:18"
+            },
+            "returnParameters": {
+              "id": 43380,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "417:0:18"
+            },
+            "scope": 43442,
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "id": 43431,
+            "nodeType": "FunctionDefinition",
+            "src": "714:95:18",
+            "nodes": [],
+            "body": {
+              "id": 43430,
+              "nodeType": "Block",
+              "src": "776:33:18",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "id": 43428,
+                    "name": "_messages",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 43370,
+                    "src": "793:9:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage",
+                      "typeString": "struct MessageBoard.Message storage ref[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 43427,
+                  "id": 43429,
+                  "nodeType": "Return",
+                  "src": "786:16:18"
+                }
+              ]
+            },
+            "functionSelector": "5ff6cbf3",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMessages",
+            "nameLocation": "723:11:18",
+            "parameters": {
+              "id": 43422,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "734:2:18"
+            },
+            "returnParameters": {
+              "id": 43427,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43426,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43431,
+                  "src": "758:16:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Message_$43358_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct MessageBoard.Message[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 43424,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 43423,
+                        "name": "Message",
+                        "nameLocations": [
+                          "758:7:18"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 43358,
+                        "src": "758:7:18"
+                      },
+                      "referencedDeclaration": 43358,
+                      "src": "758:7:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Message_$43358_storage_ptr",
+                        "typeString": "struct MessageBoard.Message"
+                      }
+                    },
+                    "id": 43425,
+                    "nodeType": "ArrayTypeName",
+                    "src": "758:9:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr",
+                      "typeString": "struct MessageBoard.Message[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "757:18:18"
+            },
+            "scope": 43442,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "id": 43441,
+            "nodeType": "FunctionDefinition",
+            "src": "815:103:18",
+            "nodes": [],
+            "body": {
+              "id": 43440,
+              "nodeType": "Block",
+              "src": "881:37:18",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "id": 43438,
+                    "name": "_paidMessages",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 43374,
+                    "src": "898:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage",
+                      "typeString": "struct MessageBoard.Message storage ref[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 43437,
+                  "id": 43439,
+                  "nodeType": "Return",
+                  "src": "891:20:18"
+                }
+              ]
+            },
+            "functionSelector": "76b00d50",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPaidMessages",
+            "nameLocation": "824:15:18",
+            "parameters": {
+              "id": 43432,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "839:2:18"
+            },
+            "returnParameters": {
+              "id": 43437,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43436,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43441,
+                  "src": "863:16:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Message_$43358_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct MessageBoard.Message[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 43434,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 43433,
+                        "name": "Message",
+                        "nameLocations": [
+                          "863:7:18"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 43358,
+                        "src": "863:7:18"
+                      },
+                      "referencedDeclaration": 43358,
+                      "src": "863:7:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Message_$43358_storage_ptr",
+                        "typeString": "struct MessageBoard.Message"
+                      }
+                    },
+                    "id": 43435,
+                    "nodeType": "ArrayTypeName",
+                    "src": "863:9:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Message_$43358_storage_$dyn_storage_ptr",
+                      "typeString": "struct MessageBoard.Message[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "862:18:18"
+            },
+            "scope": 43442,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "MessageBoard",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          43442
+        ],
+        "name": "MessageBoard",
+        "nameLocation": "74:12:18",
+        "scope": 43443,
+        "usedErrors": [],
+        "usedEvents": [
+          43366
+        ]
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 18
+}

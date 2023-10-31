@@ -1,0 +1,9 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
+
+[etherscan]
+sepolia = { key = "VVXD6V8YU395YS6PAMIES5JBVB92GY8P1A", chain = "11155111"}
