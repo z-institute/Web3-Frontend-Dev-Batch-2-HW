@@ -1,0 +1,2 @@
+- 實作過程 REPO: https://github.com/rChinnnn/rchin-first-dapp
+- Dapp 佈署至 Netlify: https://rchin-first-dapp.netlify.app/
