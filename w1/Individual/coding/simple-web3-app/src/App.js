@@ -161,6 +161,9 @@ function App() {
           <p>
             <span>Balance:</span> {balance} ETH
           </p>
+          <p>
+            <span>Default network:</span> Sepolia (Testnet)
+          </p>
           <div className="App-connect-wallet">
             <button onClick={handleConnect}>Connect Wallet</button>
           </div>
