@@ -1,4 +1,15 @@
-# Web3-Frontend-Dev-Batch-2-HW
+# Excellent homework showcase
+The Z Institute provides two month interactive Ethereum developer training course, bringing engineers from web 2.0 to web 3.0. The excellent homeworks of the students are all open sourced. Feel free to share this with interested developers or join our [Discord](https://discord.gg/MTTgzdnXpS) to give us feedback! 
+
+## Week 1：區塊鏈基礎與應用案例
+
+### Excellent homework
+- Z23106002 [(Jack Tsai)](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/tree/Z23106002/w1/Individual/coding)
+
+- Z23106006 [(盧欽法)](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/tree/Z23106006/w1/Individual/coding/my-first-dapp)
+
+---
+
 ## Usage
 1. Please clone your own brach and operate on it, the following commands are for your reference.
 ```
