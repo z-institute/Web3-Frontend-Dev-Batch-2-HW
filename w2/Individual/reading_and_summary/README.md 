@@ -1,0 +1,132 @@
+# 作業筆記
+
+## 部署合約
+
+![Start hardhat local network](start-local-network.png)
+
+`npx hardhat node` 去開啟本地端的 hardhat 測試網
+
+![Deploy Token contract](deploy.png)
+
+`npx hardhat run scripts/deploy.js --network localhost` 執行 `scripts/deploy.js`，我們來解釋一些比較關鍵的地方：
+
+```javascript
+  const Token = await ethers.getContractFactory("Token");
+  const token = await Token.deploy();
+  await token.deployed();
+```
+上面這段會去 `contracts` 資料夾裡拿到 `Token.sol` 這個合約然後部署出去。
+
+`deploy.js` 裡還有一個特別的 helper function `saveFrontendFiles` 是在我們部署合約後，他會將部署合約地址跟 abi 在我們的 `frontend` 裡面更新 `contract-address.json` 跟 `Token.json`。
+
+部署完後，我們查看 hardhat 測試網的 log 會看到合約部署的 transaction，內含合約地址，所花費的 gas 等等。
+![Deploy Token contract log](deploy-log.png)
+
+## 前端
+
+![No wallet detected](no-wallet-ui.png)
+
+![Connect wallet](connect-wallet-ui.png)
+
+前端用 React 框架寫的， `Dapp.js` 為主要渲染的頁面。一開始查看有沒有錢包插件 `window.ethereum`，若沒有則會建議下載。再檢查 `this.state.selectedAddress` 是否已有值，如果沒有則是顯示串接的按鈕。
+
+![No token](no-token-ui.png)
+
+一開始我們的錢包不會有 MHT，需要執行 faucet 這個 task 並指定我們的錢包才能拿到 token。我們可以看到 `tasks/faucet.js` 裡面是會執行把 100 MHT 跟 1 ETH 傳到指定的地址。
+
+![Transfer](transfer-ui.png)
+
+![Transfer log](transfer-log.png)
+
+當我們從 UI 執行 transfer 這個動作時主要是執行以下的程式：
+
+```javascript
+    try {
+      // If a transaction fails, we save that error in the component's state.
+      // We only save one such error, so before sending a second transaction, we
+      // clear it.
+      this._dismissTransactionError();
+
+      // We send the transaction, and save its hash in the Dapp's state. This
+      // way we can indicate that we are waiting for it to be mined.
+      const tx = await this._token.transfer(to, amount);
+      this.setState({ txBeingSent: tx.hash });
+
+      // We use .wait() to wait for the transaction to be mined. This method
+      // returns the transaction's receipt.
+      const receipt = await tx.wait();
+
+      // The receipt, contains a status flag, which is 0 to indicate an error.
+      if (receipt.status === 0) {
+        // We can't know the exact error that made the transaction fail when it
+        // was mined, so we throw this generic one.
+        throw new Error("Transaction failed");
+      }
+
+      // If we got here, the transaction was successful, so you may want to
+      // update your state. Here, we update the user's balance.
+      await this._updateBalance();
+    } catch (error) {
+      // We check the error code to see if this error was produced because the
+      // user rejected a tx. If that's the case, we do nothing.
+      if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+        return;
+      }
+
+      // Other errors are logged and stored in the Dapp's state. This is used to
+      // show them to the user, and for debugging.
+      console.error(error);
+      this.setState({ transactionError: error });
+    } finally {
+      // If we leave the try/catch, we aren't sending a tx anymore, so we clear
+      // this part of the state.
+      this.setState({ txBeingSent: undefined });
+    }
+```
+
+上面除了管理一些前端狀態抓錯的程式碼，主要功能面是下面這段，靠著 Token 的 abi，我們可以呼叫合約裡 `transfer` 這個函式，給哪個地址，給多少 token。因為結果都不是馬上，所以需要 `await`。
+
+```javascript
+// We send the transaction, and save its hash in the Dapp's state. This
+// way we can indicate that we are waiting for it to be mined.
+const tx = await this._token.transfer(to, amount);
+this.setState({ txBeingSent: tx.hash });
+
+// We use .wait() to wait for the transaction to be mined. This method
+// returns the transaction's receipt.
+const receipt = await tx.wait();
+```
+
+其實我們如果回去看看 `Token.sol` 合約裡面寫什麼話，我們可以看到合約裡有個 `mapping` 其實就是簡單的帳本，我們可以看到哪個地址有多少 MHT token。
+
+下面寫了一個簡單的 `script` 看最後 transfer 的結果：
+
+```javascript
+async function main() {
+  // This is just a convenience check
+  if (network.name === "hardhat") {
+    console.warn(
+      "You are trying to deploy a contract to the Hardhat Network, which" +
+        "gets automatically created and destroyed every time. Use the Hardhat" +
+        " option '--network localhost'"
+    );
+  }
+
+  const Token = await ethers.getContractFactory("Token");
+  const token = Token.attach("0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9");
+
+  const fromBalance = (
+    await token.balanceOf("0x09CC770985f9254f4C7F3C8C81A035b9B2bB03F9")
+  ).toString();
+  const toBalance = (
+    await token.balanceOf("0xdF3e18d64BC6A983f673Ab319CCaE4f1a57C7097")
+  ).toString();
+
+  console.log("From account balance:", fromBalance);
+  console.log("To account balance:", toBalance);
+}
+```
+
+其實寫成 task 可以加上指定看哪個地址有多少 token 也可以，不過只想快速寫寫檢查一下結果而已。
+
+![Result](result.png)
