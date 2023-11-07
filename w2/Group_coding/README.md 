@@ -1,0 +1,95 @@
+# Hardhat 專案觀察筆記
+
+## Uniswap Interface
+
+### Uniswap hardhat.config.js
+
+![Uniswap hardhat.config.js](uniswap-hardhat-config.png)
+
+* 把常用的 constant 包到別的 package 裡，例如各個鏈的 ChainId
+* 環境參數，像是 `REACT_APP_INFURA_KEY` 從 `.env` 裡取得
+* 把 hardhat network 設定為以太鏈主網的分叉，應該是希望測試環境可以與主網越相近越好。
+* 預設 accounts 數量為 2 ，應該是覺得預設的 20 太多用不到。
+* 設定 mining auto, interval 0，裡面解釋是說比較測試，不過實際上不設定的話會有什麼問題我沒有很懂。
+
+### Uniswap 其他
+
+* codecov 43%
+* cypress e2e tests
+* 這個 repository 現在主要是前端，合約及合約測試應該是拆到別的 repository: [v3-core](https://github.com/Uniswap/v3-core/tree/main)
+* 利用 react hook 寫了很多 custom hook 在 `src/hooks` 裡，像是 `useContract`，`usePairContract`。
+* abi 在 `src/abis`
+* 合約地址從別的 uniswap sdk 裡取得
+* 如果看 v3-core 就會看到 contracts 跟 test
+* UniswapV3Pool 這個蠻重要的合約的測試還有分 arbitrage, gas, swaps 的測試
+![Uniswap test](<uniswap-test.png>)
+* Test 會用 waffle fixture 把起始的測試鏈的狀態快照來加快測試速度，不用每跑一個新的測試就重新啟動
+
+## Sushiswap
+
+### Sushiswap hardhat.config.js
+
+![Sushiswap hardhat.config.js](sushiswap-hardhat-config-1.png)
+![Sushiswap hardhat.config.js](sushiswap-hardhat-config-2.png)
+![Sushiswap hardhat.config.js](sushiswap-hardhat-config-3.png)
+![Sushiswap hardhat.config.js](sushiswap-hardhat-config-4.png)
+![Sushiswap hardhat.config.js](sushiswap-hardhat-config-5.png)
+
+* 裝了很多 hardhat 的 plugins，現在很多都包在 hardhat-toolbox 裡了。
+* 設定 etherscan api key 來驗證合約
+* Gas report 來估計 contract 部署跟執行的花費
+* 設定 named accounts 讓測試用帳號比較清楚
+* 支援的 network 相關設定
+* Solidity 設定了幾個不同版本的 compilers 應該是有些函式庫需要不一樣的版本 compile
+* Tenderly 也是一個開發及測試的工具
+* 用 typechain 設定 Typescript
+* wacher 會自動重新 compile 改過的合約
+* mocha timeout 以防測試跑太久
+
+### Sushiswap 其他
+
+![Sushiswap contracts folder](sushiswap-contracts.png)
+![Sushiswap test folder](sushiswap-tests.png)
+
+* codecov 98%
+* 大致上合約有相對應的測試檔案
+* 有 `tasks` 去跑一些幫助性質的函式
+* abi 在 `deployments` 資料夾
+* 合約地址在 `@sushiswap/core-sdk`
+
+## Compound
+
+### Compound hardhat.config.js
+
+![Compound hardhat.config.js](compound-hardhat-config-1.png)
+
+* 使用 waffle 作為測試的框架，有 hardhat-waffle plugin 做串接
+* hardhat 測試網設置為主網分支
+* mocha timeout 以防測試跑太久
+
+### Compound 其他
+
+* codecov 78%
+* 這個 repository 像 uniswap-interface 也是只有前端的程式碼，Compound 有蠻完整的 abstraction 把對接合約 abi 的程式碼分開出來測試，像是 Comp 合約就有對應的 `comp.ts`， Comet 合約有 `comet.ts`。
+* abi, 合約地址存在 `src/constants.ts`
+
+## Seaport
+
+### Seaport hardhat.config.js
+
+![Seaport hardhat.config.js](seaport-hardhataconfig-1.png)
+
+* Task 寫在 config 裏面，設定去執行 scripts
+* Compiler optimizer 有特殊設定
+* 一些合約特別指定 compiler，應該新版本的 compiler 跟合約不相容
+* 設定 hardhat 網路的 block gas limit
+* 關掉 throw on call failure
+* 不允許過大的合約 (EIP-170)
+* gas reporter plugin 去產生 gas 費用報告
+* etherscan plugin 去驗證合約
+* 因為這個專案也有用 foundry，所以把 hardhat 快取分開
+
+### Seaport 其他
+
+* codecov 100%
+* 測試的每個測試用例比較偏向以使用者角度去做的例子
