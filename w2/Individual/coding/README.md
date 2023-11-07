@@ -1,7 +1,5 @@
 # Implementation hardhat-boilerplate
 
-![Token transfer](./token-transfer.png)
-
 1.  進入 hardhat-boilerplate 並安裝
 
     ```
@@ -68,4 +66,5 @@
 
     ![](./images/faucet.png)
 
-9.
+9.  轉帳成功
+    ![Token transfer](./images/token-transfer.png)
