@@ -71,6 +71,12 @@
 		  // ...
 		};
 		```
+  - `npx hardhat node` 重啟時記得，要 clear activity and nonce data，否則會出現以下 [錯誤](https://ethereum.stackexchange.com/questions/109625/received-invalid-block-tag-87-latest-block-number-is-0)
+
+    <div align="center" style="width:360px">
+      <img src="./image/metamask-clear-cach.png" >
+    </div>
+
 	- 搭配 `npx hardhat test --network local` 將合約部署在本地的小區塊鏈上，並測試
   - metamask 連本地區塊鏈 network 配置
     <div align="center" style="width:360px">
