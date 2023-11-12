@@ -4,7 +4,7 @@
 
 ### Uniswap hardhat.config.js
 
-![Uniswap hardhat.config.js](uniswap-hardhat-config.png)
+![Uniswap hardhat.config.js](screenshots/uniswap-hardhat-config.png)
 
 * 把常用的 constant 包到別的 package 裡，例如各個鏈的 ChainId
 * 環境參數，像是 `REACT_APP_INFURA_KEY` 從 `.env` 裡取得
@@ -29,11 +29,11 @@
 
 ### Sushiswap hardhat.config.js
 
-![Sushiswap hardhat.config.js](sushiswap-hardhat-config-1.png)
-![Sushiswap hardhat.config.js](sushiswap-hardhat-config-2.png)
-![Sushiswap hardhat.config.js](sushiswap-hardhat-config-3.png)
-![Sushiswap hardhat.config.js](sushiswap-hardhat-config-4.png)
-![Sushiswap hardhat.config.js](sushiswap-hardhat-config-5.png)
+![Sushiswap hardhat.config.js](screenshots/sushiswap-hardhat-config-1.png)
+![Sushiswap hardhat.config.js](screenshots/sushiswap-hardhat-config-2.png)
+![Sushiswap hardhat.config.js](screenshots/sushiswap-hardhat-config-3.png)
+![Sushiswap hardhat.config.js](screenshots/sushiswap-hardhat-config-4.png)
+![Sushiswap hardhat.config.js](screenshots/sushiswap-hardhat-config-5.png)
 
 * 裝了很多 hardhat 的 plugins，現在很多都包在 hardhat-toolbox 裡了。
 * 設定 etherscan api key 來驗證合約
@@ -48,8 +48,8 @@
 
 ### Sushiswap 其他
 
-![Sushiswap contracts folder](sushiswap-contracts.png)
-![Sushiswap test folder](sushiswap-tests.png)
+![Sushiswap contracts folder](screenshots/sushiswap-contracts.png)
+![Sushiswap test folder](screenshots/sushiswap-tests.png)
 
 * codecov 98%
 * 大致上合約有相對應的測試檔案
@@ -61,7 +61,7 @@
 
 ### Compound hardhat.config.js
 
-![Compound hardhat.config.js](compound-hardhat-config-1.png)
+![Compound hardhat.config.js](screenshots/compound-hardhat-config.png)
 
 * 使用 waffle 作為測試的框架，有 hardhat-waffle plugin 做串接
 * hardhat 測試網設置為主網分支
@@ -77,7 +77,7 @@
 
 ### Seaport hardhat.config.js
 
-![Seaport hardhat.config.js](seaport-hardhataconfig-1.png)
+![Seaport hardhat.config.js](screenshots/seaport-hardhataconfig-1.png)
 
 * Task 寫在 config 裏面，設定去執行 scripts
 * Compiler optimizer 有特殊設定

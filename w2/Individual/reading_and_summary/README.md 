@@ -2,11 +2,11 @@
 
 ## 部署合約
 
-![Start hardhat local network](start-local-network.png)
+![Start hardhat local network](screenshots/start-local-network.png)
 
 `npx hardhat node` 去開啟本地端的 hardhat 測試網
 
-![Deploy Token contract](deploy.png)
+![Deploy Token contract](screenshots/deploy.png)
 
 `npx hardhat run scripts/deploy.js --network localhost` 執行 `scripts/deploy.js`，我們來解釋一些比較關鍵的地方：
 
@@ -20,23 +20,23 @@
 `deploy.js` 裡還有一個特別的 helper function `saveFrontendFiles` 是在我們部署合約後，他會將部署合約地址跟 abi 在我們的 `frontend` 裡面更新 `contract-address.json` 跟 `Token.json`。
 
 部署完後，我們查看 hardhat 測試網的 log 會看到合約部署的 transaction，內含合約地址，所花費的 gas 等等。
-![Deploy Token contract log](deploy-log.png)
+![Deploy Token contract log](screenshots/deploy-log.png)
 
 ## 前端
 
-![No wallet detected](no-wallet-ui.png)
+![No wallet detected](screenshots/no-wallet-ui.png)
 
-![Connect wallet](connect-wallet-ui.png)
+![Connect wallet](screenshots/connect-wallet-ui.png)
 
 前端用 React 框架寫的， `Dapp.js` 為主要渲染的頁面。一開始查看有沒有錢包插件 `window.ethereum`，若沒有則會建議下載。再檢查 `this.state.selectedAddress` 是否已有值，如果沒有則是顯示串接的按鈕。
 
-![No token](no-token-ui.png)
+![No token](screenshots/no-token-ui.png)
 
 一開始我們的錢包不會有 MHT，需要執行 faucet 這個 task 並指定我們的錢包才能拿到 token。我們可以看到 `tasks/faucet.js` 裡面是會執行把 100 MHT 跟 1 ETH 傳到指定的地址。
 
-![Transfer](transfer-ui.png)
+![Transfer](screenshots/transfer-ui.png)
 
-![Transfer log](transfer-log.png)
+![Transfer log](screenshots/transfer-log.png)
 
 當我們從 UI 執行 transfer 這個動作時主要是執行以下的程式：
 
@@ -129,4 +129,4 @@ async function main() {
 
 其實寫成 task 可以加上指定看哪個地址有多少 token 也可以，不過只想快速寫寫檢查一下結果而已。
 
-![Result](result.png)
+![Result](screenshots/result.png)
