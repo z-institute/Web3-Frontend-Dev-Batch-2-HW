@@ -1,16 +1,15 @@
 # W3 課程與作業 - 智能合約基礎
-
 W3 作業
 
 ## ChainShot
 
 ![ChainShot](screenshots/chainshot.png)
 
+
 ## Crypto Zombies
 
 ![Crypto Zombies Lesson 1](screenshots/crypto-zombies-lesson-1.png)
 ![Crypto Zombies Lesson 2](screenshots/crypto-zombies-lesson-2.png)
-
 
 - Version Pragma: 設定智能合約可以編譯的版本，以防跑了不相容的版本。
 - uint 跟 int: unsigned integer 跟 integer，分別都可以設定說使用多少空間，從 8 位元到 256 位元都可以用。
