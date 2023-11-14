@@ -1,5 +1,7 @@
 # 作業筆記
 
+hardhat boilerplate 測試
+
 ## 部署合約
 
 ![Start hardhat local network](screenshots/start-local-network.png)

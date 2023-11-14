@@ -1,5 +1,7 @@
 # Hardhat 專案觀察筆記
 
+參考 Uniswap, Sushiswap, Compound, Seaport hardhat 設定
+
 ## Uniswap Interface
 
 ### Uniswap hardhat.config.js
