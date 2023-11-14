@@ -3,10 +3,9 @@
 
 ## CryptoZombies
 ![image](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/assets/13402112/82bed6ec-ddff-4980-b74c-5a66c8552b49)
-![image](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/assets/13402112/e019e6f3-3368-40dd-ae6f-9b511aa8b5f5)
+![image](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/assets/13402112/c30b9a57-76f4-4009-83cc-b9085d7d1a2e)
 
-
-
+## Note
 - 函數調用：
 在範例中，透過 ZombieFactory.createRandomZombie(name) 函數創建一個新的僵屍。這個函數的作用是創建一個具有隨機屬性的僵屍。
 
