@@ -1,6 +1,7 @@
 # ERC20 支付的 NFT
 解釋如何寫一個用指定 ERC20 支付的 NFT 合約，兩個合約在 `token-nft-practice` 的文件夾裡。
 
+
 ![Alt text](<screenshots/Remix - Ethereum IDE.png>)
 第一步先部署要用來支付的 ERC20 token 合約，合約直接用 OpenZeppelin 的 Solidity Wizard 生成。
 
