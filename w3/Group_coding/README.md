@@ -5,33 +5,52 @@
 ![Alt text](<screenshots/Remix - Ethereum IDE.png>)
 第一步先部署要用來支付的 ERC20 token 合約，合約直接用 OpenZeppelin 的 Solidity Wizard 生成。
 
+---
+
 ![Alt text](<screenshots/Remix - Ethereum IDE (1).png>)
 先 mint `999*10**decimals` 顆 token 。
+
+---
 
 ![Alt text](<screenshots/Remix - Ethereum IDE (2).png>)
 再來部署 ERC721 NFT 合約，合約直接用 OpenZeppelin 的 Solidity Wizard 生成，另外加上了幾個 function ， `setLazyTokenAddress` 去指定要用來支付的 ERC20 token 合約， `safeMint` 裡寫上用設定的 ERC20 token 支付再 mint NFT 給呼叫的錢包，最後再寫了一個 `withdrawLazyToken` function 去讓合約擁有者提領合約有的 ERC20 token 。
 
+---
+
 ![Alt text](<screenshots/Remix - Ethereum IDE (3).png>)
 設定 ERC20 token 地址。
+
+---
 
 ![Alt text](<screenshots/Remix - Ethereum IDE (4).png>)
 買 NFT 之前，使用者 `0x5B38...ddC4` 要先批准 NFT 合約代替使用者去使用 token 付款。
 
+---
+
 ![Alt text](<screenshots/Remix - Ethereum IDE (5).png>)
 一開始使用者地址 `0x5B38...ddC4` 是沒有 NFT 的。
+
+---
 
 ![Alt text](<screenshots/Remix - Ethereum IDE (6).png>)
 Mint NFT 了！
 
+---
+
 ![Alt text](<screenshots/Remix - Ethereum IDE (7).png>)
 使用者錢包 `0x5B38...ddC4` 現在有 1 個 NFT 了。
+
+---
 
 ![Alt text](<screenshots/Remix - Ethereum IDE (8).png>)
 Token 0 號的擁有者是 `0x5B38...ddC4` 。
 
+---
+
 ![Alt text](<screenshots/Remix - Ethereum IDE (9).png>)
 因為 mint NFT 是花 `100*10**decimals` ， `0x5B38...ddC4` 現在的帳戶裡有 `899*10**decimals` 顆 token 。
 
+---
 
 ![Alt text](<screenshots/Remix - Ethereum IDE (10).png>)
 NFT 合約地址擁有 `100*10**decimals` 個 token 。
