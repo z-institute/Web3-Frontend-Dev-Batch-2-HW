@@ -5,7 +5,6 @@ W3 作業
 
 ![ChainShot](screenshots/chainshot.png)
 
-
 ## Crypto Zombies
 
 ![Crypto Zombies Lesson 1](screenshots/crypto-zombies-lesson-1.png)
@@ -19,7 +18,7 @@ W3 作業
 - address: 可以是錢包地址，也可以是合約地址。
 - msg: 包含 sender 跟 value ，呼叫這個智能合約的地址跟從傳近來的 ether 。還有其他資料向 data, gas, sig 。
 - function 種類有分 private, internal, external, public
-  - privat: 只能由這個智能合約內部呼叫
+  - private: 只能由這個智能合約內部呼叫
   - internal: 只能從內部呼叫或是繼承這個合約的子合約
   - external: 只能從外部呼叫
   - public: 可以從內部也可以從外部呼叫
