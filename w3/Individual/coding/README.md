@@ -37,11 +37,11 @@
 
   ![合約授權](./合約授權.png)
 
-1. 使用 `MyNFT.sol` 去執行 `safeMint` 來鑄造 NFT
+3. 使用 `MyNFT.sol` 去執行 `safeMint` 來鑄造 NFT
 
-  ![合約鑄造](./合約鑄造.png)
-  ![餘額](./餘額.png)
+![合約鑄造](./合約鑄造.png)
+ ![餘額](./餘額.png)
 
-1. 最後 `MyNFT.sol` 可以執行 `withdrawToken` 讓部署合約的人取出錢（例子中因為部署兩個合約和購買是同一個人，所以在取出 token 後，又變回 1000 token）
+4. 最後 `MyNFT.sol` 可以執行 `withdrawToken` 讓部署合約的人取出錢（例子中因為部署兩個合約和購買是同一個人，所以在取出 token 後，又變回 1000 token）
 
-  ![取出](./取出.png)
+![取出](./取出.png)
