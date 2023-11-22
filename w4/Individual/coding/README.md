@@ -1,6 +1,6 @@
 # W4 作業 - Dapp 開發基礎
 
-![Demo](<NFT Viewer.png>)
+![Demo Dapp](<NFT Viewer.png>)
 
 這個 Dapp 示範主要的 ERC721 讀取功能，使用者可以輸入 ERC721 合約地址以及 Token ID 便能取得相關的 metadata 以及圖像。
 
