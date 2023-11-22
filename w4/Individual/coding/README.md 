@@ -1,0 +1,17 @@
+# W4 作業 - Dapp 開發基礎
+
+![Demo](<NFT Viewer.png>)
+
+這個 Dapp 示範主要的 ERC721 讀取功能，使用者可以輸入 ERC721 合約地址以及 Token ID 便能取得相關的 metadata 以及圖像。
+
+## next.js hydration 錯誤
+
+因為串接鏈上資料的原因並不能好好利用 next.js SSR 的性能，常常會有 server/client render mismatch 的問題，沒有很清楚渲染邏輯跟怎麼樣調整性能會比較好時會忙得一頭霧水。
+
+## Typescript 纏鬥
+
+本來認為 wagmi 的 contractRead hook 有點瞎，沒有什麼 type 功能的整合，但後來發現可以利用 wagmi cli 去生成 abi 並生成 type 就好用了很多。
+
+## IPFS content 取得跟顯示
+
+前端對於載入中的狀態要處理好，因為從鏈上讀取要花時間， NFT 的資料也都是存在 IPFS，要有好的使用者體驗要好好處理中間載入的時間。有好的 IPFS gateway 服務，外加 content pinning 才會讓顯示速度比較快。
