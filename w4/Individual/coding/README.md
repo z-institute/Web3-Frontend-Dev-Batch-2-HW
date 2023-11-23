@@ -1,6 +1,6 @@
-# dApp Demonstration
+# Creating a ERC721 contract and showing NFT imges on a dAPP
 
-Building the first dApp by using wagami and walletConnect modules.
+Building the first dApp by using wagami and walletConnect modules. By connecting to web3 wallet, the dapp can show the wallet's own NFT images.
 
 ## Create NFT Contract
 
