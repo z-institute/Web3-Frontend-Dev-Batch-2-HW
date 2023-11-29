@@ -50,10 +50,22 @@ unchecked {
   const { data } = useContractRead({ abi })
   ```
 
-
 ## 2. Web3 名片
 
-## 其他研究
+### 專案架構
+
+- components：UI 畫面顯示元件
+- hooks：用於封裝畫面所需資訊
+  - useEns.tsx : 提供 ENS 資訊資訊
+  - useImgColor.tsx : 背景會因圖片顏色種類而有所變化
+  - useNFT.tsx : 在是該 ENS 所用有的 NFT
+- [取得 ENS 詳細資訊](https://docs.ens.domains/dapp-developer-guide/resolving-names#looking-up-other-resources)
+- `useProvider` : 取得客戶端的以太坊提供者
+- `useAccount` : 取得現錢包的用戶帳號
+- `useEnsName` : 取得地址的 ENS 名稱
+
+
+## 3. 其他研究
 
 - 適合開發 NFT 的 ERC 比較：
   - ERC721:比較適用於每個藝術品數量只有一個可以被購買
