@@ -33,6 +33,15 @@ The Z Institute provides two month interactive Ethereum developer training cours
 - Z23106003 [(Kevin)](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/tree/Z23106003/w4/Individual/coding)
 
 
+## Week 5：Dapp 連結錢包與整合套件介紹
+
+### Excellent homework
+- Z23106002 [(Jack Tsai)](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/tree/Z23106002/w5/Individual/coding)
+
+- Z23106003 [(Kevin)](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/tree/Z23106003/w5/Individual/coding)
+
+- Z23106006 [(盧欽法)](https://github.com/z-institute/Web3-Frontend-Dev-Batch-2-HW/tree/Z23106006/w5/reading_and_summary)
+
 ---
 
 ## Usage
