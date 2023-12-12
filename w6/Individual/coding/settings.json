@@ -1,0 +1,26 @@
+{
+  "remappings": [
+    "@openzeppelin/=node_modules/@openzeppelin/"
+  ],
+  "optimizer": {
+    "enabled": true,
+    "runs": 300
+  },
+  "metadata": {
+    "bytecodeHash": "ipfs"
+  },
+  "outputSelection": {
+    "*": {
+      "*": [
+        "evm.bytecode",
+        "evm.deployedBytecode",
+        "devdoc",
+        "userdoc",
+        "metadata",
+        "abi"
+      ]
+    }
+  },
+  "evmVersion": "london",
+  "libraries": {}
+}
