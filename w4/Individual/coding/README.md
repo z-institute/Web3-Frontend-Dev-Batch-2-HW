@@ -1,8 +1,8 @@
 # Creating a ERC721 contract and showing NFT imges on a dAPP
 
-Building the first dApp by using wagami and walletConnect modules. By connecting to web3 wallet, the dapp can show the wallet's own NFT images.
+Building the first dApp by using wagami and walletConnect modules. By connecting to web3 wallet, the dapp can show the owner's own NFT images.
 
-## Create NFT Contract
+## A NFT Contract Development and NFT Creationn
 
 Mint NFT - tokenURI has to be the location of a JSON blob of data with the metadata ([metadata standard](https://docs.opensea.io/docs/metadata-standards)) for ERC721 token. Essential properties are such as `name`, `description`, `image` to allow NFT marketplace, like [OpenSea], to retrieve the information of your NFT.
 
@@ -16,7 +16,7 @@ References:
 2. [NFT.STORAGE Quickstart]
 3. [IPFS Gateways]
 
-## Develop dApp
+## A DApp Development
 
 The location of NFT Image on IPFS ([link](https://ipfs.io/ipfs/bafkreid3dpobfzozvgtuem4z7bsboz2n3dfb2t6leaq6rceggrqa5zq4u4))
 
@@ -90,6 +90,14 @@ The location of NFT Image on IPFS ([link](https://ipfs.io/ipfs/bafkreid3dpobfzoz
    const API_KEY = process.env.API_KEY;
    ...
    ```
+
+## References
+
+1. [Create Next](https://nextjs.org/docs/pages/api-reference/create-next-app)
+2. [Rainbow kit](https://www.rainbowkit.com/)
+3. [Wagmi](https://wagmi.sh/)
+4. [MetaMask SDK](https://metamask.io/sdk/)
+5. [ehter.js (v5)](https://docs.ethers.org/v5/)
 
 [OpenSea]: (https://testnets.opensea.io/) "OpenSea - NFT Marketplace"
 [How to Create and Deploy an ERC-721 (NFT)]: (https://www.quicknode.com/guides/ethereum-development/nfts/how-to-create-and-deploy-an-erc-721-nft) "Create and Deploy ERC-721"

@@ -1,5 +1,7 @@
 "use client";
 
+import "../styles/globals.css";
+import "@rainbow-me/rainbowkit/styles.css";
 import * as React from "react";
 
 import {
@@ -25,8 +27,18 @@ import {
 } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import { extendTheme } from "@chakra-ui/react";
 
-const { chains, publicClient } = configureChains(
+const theme = extendTheme({
+  colors: {
+    brand: "#B99362",
+    "brand-black": "#19191A",
+  },
+});
+
+import { ChakraProvider } from "@chakra-ui/react";
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     mainnet,
     polygon,
@@ -36,7 +48,10 @@ const { chains, publicClient } = configureChains(
     zora,
     ...(process.env.ENABLE_TESTNETS === "true" ? [sepolia, goerli] : []),
   ],
-  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID || "" }), publicProvider()]
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_APIKEY || "" }),
+    publicProvider(),
+  ]
 );
 
 const projectId = process.env.WALLETCONNECT_PROJECTID || "";
@@ -48,7 +63,7 @@ const { wallets } = getDefaultWallets({
 });
 
 const demoAppInfo = {
-  appName: "Rainbowkit Demo",
+  appName: "Web3 Namecard",
 };
 
 const connectors = connectorsForWallets([
@@ -67,14 +82,17 @@ const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
+  webSocketPublicClient,
 });
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export default function Provider({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} appInfo={demoAppInfo}>
-        {children}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <ChakraProvider theme={theme}>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider chains={chains} appInfo={demoAppInfo}>
+          {children}
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </ChakraProvider>
   );
 }
